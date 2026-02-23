@@ -6,12 +6,12 @@
   "scripts": {
     "test": "mocha --exit tests/*",
     "start": "node index.js",
-    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:start": "pm2 start ecosystem.config.js --only portalempleo --env development",
     "pm2:start:prod": "pm2 start ecosystem.config.js --env production",
-    "pm2:stop": "pm2 stop ecosystem.config.js",
-    "pm2:restart": "pm2 restart ecosystem.config.js",
-    "pm2:delete": "pm2 delete ecosystem.config.js",
-    "pm2:logs": "pm2 logs expressbra",
+    "pm2:stop": "pm2 stop ecosystem.config.js --only portalempleo --env development",
+    "pm2:restart": "pm2 restart ecosystem.config.js --only portalempleo --env development",
+    "pm2:delete": "pm2 delete ecosystem.config.js --only portalempleo --env development",
+    "pm2:logs": "pm2 logs portalempleo",
     "pm2:monit": "pm2 monit"
   },
   "license": "MIT",
@@ -22,6 +22,7 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "oci-sdk": "^2.123.0",
     "oracledb": "^6.10.0"
   },
   "overrides": {

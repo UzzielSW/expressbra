@@ -15,13 +15,11 @@ async function getConnection() {
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       connectString: process.env.DB_CONNECT_STRING,
+      // Configuración del wallet (como en codigo_ejemplo.js)
+      configDir: process.env.TNS_ADMIN,
+      walletLocation: process.env.TNS_ADMIN,
+      walletPassword: process.env.WALLET_PASSWORD
     };
-
-    // Si TNS_ADMIN está configurado, usar wallet
-    if (process.env.TNS_ADMIN) {
-      connectionConfig.configDir = process.env.TNS_ADMIN;
-      connectionConfig.walletLocation = process.env.TNS_ADMIN;
-    }
 
     connection = await oracledb.getConnection(connectionConfig);
     console.log("Successfully connected to Oracle Database");
